@@ -1,8 +1,22 @@
 import { TodoList } from '@/components/TodoList';
 import { UserList } from '@/components/UserList';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { fetchUsers } from '@/lib/api';
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from '@tanstack/react-query';
 
-export default function Home() {
+export default async function Home() {
+  const queryClient = new QueryClient();
+
+  // 預取怪獸資料
+  await queryClient.prefetchQuery({
+    queryKey: ['users'],
+    queryFn: fetchUsers,
+  });
+
   return (
     <div className="min-h-screen bg-background p-4 sm:p-8">
       <div className="max-w-6xl mx-auto space-y-8">
@@ -16,8 +30,10 @@ export default function Home() {
           </p>
         </div>
 
-        {/* React Query 使用者列表區域 */}
-        <UserList />
+        {/* React Query 使用者列表區域 - UserList 本身就是 Server Component */}
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          <UserList />
+        </HydrationBoundary>
 
         {/* 教學說明區域 */}
         <div className="grid md:grid-cols-2 gap-6">
