@@ -1,7 +1,7 @@
 import { TodoList } from '@/components/TodoList';
-import { UserList } from '@/components/UserList';
+import { MonsterList } from '@/components/MonsterList';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { fetchUsers } from '@/lib/api';
+import { fetchMonsters } from '@/lib/api';
 import {
   dehydrate,
   HydrationBoundary,
@@ -11,10 +11,10 @@ import {
 export default async function Home() {
   const queryClient = new QueryClient();
 
-  // 預取怪獸資料
+  // 預取用戶資料
   await queryClient.prefetchQuery({
-    queryKey: ['users'],
-    queryFn: fetchUsers,
+    queryKey: ['monsters'],
+    queryFn: fetchMonsters,
   });
 
   return (
@@ -30,9 +30,8 @@ export default async function Home() {
           </p>
         </div>
 
-        {/* React Query 使用者列表區域 - UserList 本身就是 Server Component */}
         <HydrationBoundary state={dehydrate(queryClient)}>
-          <UserList />
+          <MonsterList />
         </HydrationBoundary>
 
         {/* 教學說明區域 */}

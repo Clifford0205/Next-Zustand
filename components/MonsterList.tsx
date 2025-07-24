@@ -2,8 +2,8 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { fetchUsers } from '@/lib/api';
-import { UserCard } from './UserCard';
+import { fetchMonsters } from '@/lib/api';
+import { MonsterCard } from './MonsterCard';
 
 function LoadingSkeleton() {
   return (
@@ -25,16 +25,16 @@ function LoadingSkeleton() {
   );
 }
 
-export function UserList() {
+export function MonsterList() {
   const {
-    data: users,
+    data: monsters,
     isLoading,
     error,
     isStale,
     isFetching,
   } = useQuery({
-    queryKey: ['users'],
-    queryFn: fetchUsers,
+    queryKey: ['monsters'],
+    queryFn: fetchMonsters,
   });
 
   if (isLoading) {
@@ -76,8 +76,8 @@ export function UserList() {
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {users?.map(user => (
-            <UserCard key={user.id} user={user} />
+          {monsters?.map(monster => (
+            <MonsterCard key={monster.id} monster={monster} />
           ))}
         </div>
         <div className="mt-6 p-4 bg-muted rounded-lg text-sm text-muted-foreground">
