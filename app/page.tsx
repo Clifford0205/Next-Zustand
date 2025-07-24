@@ -1,103 +1,94 @@
-import Image from "next/image";
+import { TodoList } from '@/components/TodoList';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-background p-4 sm:p-8">
+      <div className="max-w-6xl mx-auto space-y-8">
+        {/* 標題區域 */}
+        <div className="text-center space-y-4">
+          <h1 className="text-4xl font-bold tracking-tight">
+            Zustand 狀態管理教學
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            透過 Todo List 範例學習 Zustand - 一個輕量且強大的 React 狀態管理庫
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* 教學說明區域 */}
+        <div className="grid md:grid-cols-2 gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>🎯 什麼是 Zustand？</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <p className="text-sm text-muted-foreground">
+                Zustand 是一個小巧、快速且可擴展的狀態管理解決方案。
+              </p>
+              <ul className="text-sm space-y-1 text-muted-foreground">
+                <li>• 簡單的 API，無需樣板代碼</li>
+                <li>• 內建 TypeScript 支援</li>
+                <li>• 支援中間件 (如持久化)</li>
+                <li>• 無需 Provider 包裝</li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>🚀 核心概念</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <p className="text-sm text-muted-foreground">
+                這個 Todo List 示範了 Zustand 的核心功能：
+              </p>
+              <ul className="text-sm space-y-1 text-muted-foreground">
+                <li>• 建立 Store 和 Actions</li>
+                <li>• 狀態持久化 (localStorage)</li>
+                <li>• 響應式更新</li>
+                <li>• TypeScript 類型安全</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Todo List 主要內容 */}
+        <TodoList />
+
+        {/* 程式碼說明區域 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>📝 Store 結構說明</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <pre className="bg-muted p-4 rounded-lg text-sm overflow-x-auto">
+              <code>{`// lib/todoStore.ts
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+
+export const useTodoStore = create<TodoStore>()(
+  persist(
+    (set, get) => ({
+      todos: [],
+      addTodo: (text) => set((state) => ({ 
+        todos: [newTodo, ...state.todos] 
+      })),
+      toggleTodo: (id) => set((state) => ({
+        todos: state.todos.map(todo => 
+          todo.id === id 
+            ? { ...todo, completed: !todo.completed } 
+            : todo
+        )
+      })),
+      // ... 更多 actions
+    }),
+    { name: 'todo-storage' } // localStorage 鍵名
+  )
+);`}</code>
+            </pre>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
