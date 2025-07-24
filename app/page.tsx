@@ -1,4 +1,5 @@
 import { TodoList } from '@/components/TodoList';
+import { UserList } from '@/components/UserList';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function Home() {
@@ -14,6 +15,9 @@ export default function Home() {
             透過 Todo List 範例學習 Zustand - 一個輕量且強大的 React 狀態管理庫
           </p>
         </div>
+
+        {/* React Query 使用者列表區域 */}
+        <UserList />
 
         {/* 教學說明區域 */}
         <div className="grid md:grid-cols-2 gap-6">
